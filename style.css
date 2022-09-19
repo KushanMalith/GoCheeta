@@ -29,7 +29,7 @@ html{
     font-size: 1.7rem;
     margin-left: 1rem;
     color: white;
-    text-decoration: none;
+    text-decoration:none;
 }
 .header .navbar a:hover{
     background: #ffc61a;
