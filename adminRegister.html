@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Admin Register</title>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            <input id="register-name" type="text" placeholder="Name"/>
+            <input id="register-email" type="text" placeholder="Email"/>
+            <input id="register-mobile" type="text" placeholder="Mobile"/>
+            <input id="register-password" type="password" placeholder="password"/>
+            <button id="register-btn">Register</button>
+            <p class="message">Dont have an account? <a href="adminLogin.html">Sign Up</a></p>
+        </div>
+      </div>    
+
+      <script>
+    document.getElementById("register-btn").addEventListener("click", () => {
+    const data = {
+        id: Math.random().toString(16).slice(2), 
+        name: document.getElementById("register-name").value,
+        email: document.getElementById("register-email").value,
+        mobile: document.getElementById("register-mobile").value,
+        password: document.getElementById("register-password").value
+    }
+
+    axios.post("http://localhost:8080/go-cheeta-backend/admin", data, {
+        headers : {
+            "content-type" : "application/json"
+        },
+    }).then((res) => {
+        if(res.status === 201) {
+            window.open(
+            'https://static.wixstatic.com/media/4a1d5b_5361da33eab146479729473ed7a5d8ce~mv2.gif',
+            '_blank' 
+         );
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+
+})
+      </script> 
+</body>
+</html>
